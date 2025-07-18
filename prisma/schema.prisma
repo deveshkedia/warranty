@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Warranty {
+  id        Int   @id @default(autoincrement())
+  customer Customer?
+  product Product?
+  application Application?
+  createdAt DateTime @default(now())
+}
+
+model Customer{
+  id        String   @id @default(uuid())
+  warranty Warranty @relation(fields: [warranty_id], references: [id])
+  warranty_id Int @unique
+  customer_name      String
+  customer_address   String
+  customer_phone     String
+  customer_email     String
+  invoice_number     String
+  date_purchase      DateTime
+}
+
+model Product{
+  id        String   @id @default(uuid())
+  warranty Warranty @relation(fields: [warranty_id], references: [id])
+  warranty_id Int @unique
+  quantity Int
+  name String
+  warranty_period String
+  batch_number String
+  area_of_painting String
+}
+
+model Application{
+  id        String   @id @default(uuid())
+  warranty Warranty @relation(fields: [warranty_id], references: [id])
+  warranty_id Int @unique
+  authorized_by String
+  primer_qty String
+  primer_used String
+  surface_value String
+}
