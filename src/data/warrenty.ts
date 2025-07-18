@@ -29,6 +29,7 @@ export async function createFullWarrantyEntry(data: {
   }
   product: {
     name: string
+    quantity: number
     warranty_period: string
     batch_number: string
     area_of_painting: string

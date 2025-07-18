@@ -2,14 +2,15 @@ import { prisma } from "@/lib/db"
 import { notFound } from "next/navigation"
 import WarrantyText from "./warranty_text"
 import { readWarrantyCSV } from "@/data/warrenty"
-import DownloadPDFButton from "./DownloadPDFButton"
+// import DownloadPDFButton from "./DownloadPDFButton"
 
-export default async function SuccessPage({
-  searchParams,
-}: {
-  searchParams: { warrantyId?: string }
-}) {
-  const warrantyId = searchParams.warrantyId
+type Props = {
+  params: Promise<{ id: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export default async function SuccessPage({ searchParams }: Props) {
+  const { warrantyId } = await searchParams
   if (!warrantyId) return notFound()
 
   // Fetch the warranty and related data
@@ -41,7 +42,7 @@ export default async function SuccessPage({
 
   return (
     <div className="font-sans min-h-screen p-8 pb-20 flex flex-col items-center justify-center bg-gray-50">
-      <DownloadPDFButton targetId="warranty-content" />
+      {/* <DownloadPDFButton targetId="warranty-content" /> */}
       <div
         id="warranty-content"
         className="bg-white p-8 rounded shadow w-full max-w-2xl mb-8"
