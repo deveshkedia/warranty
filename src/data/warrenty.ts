@@ -3,9 +3,11 @@ import path from "path"
 import { prisma } from "@/lib/db"
 import { parse } from "csv-parse/sync"
 
-// Path to the CSV file relative to this file
-const csvFilePath =
-  "/Users/deveshkedia/Development/Projects/Doing/warranty/src/data/Warranty Period - Sheet1.csv"
+// Path to the CSV file relative to the project root
+const csvFilePath = path.join(
+  process.cwd(),
+  "src/data/Warranty Period - Sheet1.csv"
+)
 
 export async function readWarrantyCSV() {
   console.log(csvFilePath)
