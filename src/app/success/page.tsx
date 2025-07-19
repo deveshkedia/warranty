@@ -2,6 +2,8 @@ import { prisma } from "@/lib/db"
 import { notFound } from "next/navigation"
 import WarrantyText from "./warranty_text"
 import { readWarrantyCSV } from "@/data/warrenty"
+import Image from "next/image"
+import DownloadPDFButton from "./DownloadPDFButton"
 // import DownloadPDFButton from "./DownloadPDFButton"
 
 type Props = {
@@ -42,6 +44,16 @@ export default async function SuccessPage({ searchParams }: Props) {
 
   return (
     <div className="font-sans min-h-screen p-8 pb-20 flex flex-col items-center justify-center bg-gray-50">
+      <DownloadPDFButton targetId="warranty-content" />
+      <div className="flex flex-col items-center mb-8">
+        <Image src="/logo.png" alt="Logo" width={220} height={220} priority />
+        <div className="mt-4 text-lg font-semibold text-gray-700">
+          Warranty Number:{" "}
+          <span className="font-mono bg-gray-100 px-2 py-1 rounded">
+            {warranty.id.toString().padStart(8, "0")}
+          </span>
+        </div>
+      </div>
       {/* <DownloadPDFButton targetId="warranty-content" /> */}
       <div
         id="warranty-content"
@@ -53,6 +65,16 @@ export default async function SuccessPage({ searchParams }: Props) {
         <h3 className="text-base font-semibold mb-2 mt-4">Customer Details</h3>
         <table className="w-full border border-gray-300 mb-6">
           <tbody>
+            <tr>
+              <td className="font-medium pr-4 text-left align-middle border border-gray-300">
+                Warranty Number
+              </td>
+              <td className="border border-gray-300">
+                <span className="font-mono bg-gray-100 px-2 py-1 rounded">
+                  {warranty.id.toString().padStart(8, "0")}
+                </span>
+              </td>
+            </tr>
             <tr>
               <td className="font-medium pr-4 text-left align-middle border border-gray-300">
                 Customer Name

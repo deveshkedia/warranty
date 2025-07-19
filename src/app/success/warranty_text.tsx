@@ -30,9 +30,9 @@ function formatLiability(liability: string) {
 }
 
 function formatConditions(conditions: string) {
-  // Split by line breaks or bullet points
+  // Split by line breaks or bullet points, but NOT dashes
   const items = conditions
-    .split(/[\n•\-\u2022]/)
+    .split(/[\n•\u2022]/)
     .map((s) => s.trim())
     .filter((s) => s.length > 0 && !/^conditions[:]?$/i.test(s))
   return (
@@ -48,9 +48,9 @@ function formatConditions(conditions: string) {
 }
 
 function formatApplication(application: string) {
-  // Split by line breaks or bullet points
+  // Split by line breaks or bullet points, but NOT dashes
   const items = application
-    .split(/\n|•|\-|\u2022/)
+    .split(/[\n•\u2022]/)
     .map((s) => s.trim())
     .filter((s) => s.length > 0 && !/^application[:]?$/i.test(s))
   return (
@@ -115,14 +115,14 @@ const WarrantyText = ({
       </li>
     </ol>
 
-    <h3 className="text-xl font-semibold mt-6 mb-2">Conditions</h3>
+    {/* <h3 className="text-xl font-semibold mt-6 mb-2">Conditions</h3>
     <ul className="list-disc ml-6">
       <li>
         Five (5) year warranty only in case of anti-algal/anti-fungal
         performance.
       </li>
       <li>Four (4) year shade-fading warranty for the paint.</li>
-    </ul>
+    </ul> */}
 
     {warrantyProduct?.Conditions &&
       formatConditions(warrantyProduct.Conditions)}
