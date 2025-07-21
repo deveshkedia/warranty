@@ -214,7 +214,10 @@ export default async function SuccessPage({ searchParams }: Props) {
         <h2 className="text-2xl font-bold mb-4 text-center">
           Warranty Information
         </h2>
-        <WarrantyText warrantyProduct={warrantyProduct} />
+        <WarrantyText
+          warrantyProduct={warrantyProduct}
+          years={warranty.product.warranty_period}
+        />
       </div>
     </div>
   )

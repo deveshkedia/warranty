@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 interface WarrantyProductFieldsProps {
   warrantyData: Array<Record<string, string>>
@@ -20,6 +20,19 @@ export default function WarrantyProductFields({
         .map(cleanProductName)
     )
   )
+
+  const [warrantyPeriod, setWarrantyPeriod] = useState("")
+
+  // Update warrantyPeriod when selectedProduct changes
+  useEffect(() => {
+    const period =
+      warrantyData.find(
+        (row) =>
+          cleanProductName(row["Product Name"]?.trim() || "") ===
+          selectedProduct
+      )?.["Warranty Period"] || ""
+    setWarrantyPeriod(period)
+  }, [selectedProduct, warrantyData])
 
   const selectedWarrantyPeriod =
     warrantyData.find(
@@ -65,8 +78,8 @@ export default function WarrantyProductFields({
                 placeholder="Warranty Period"
                 required
                 className="border-none p-2 rounded w-full bg-gray-100"
-                value={selectedWarrantyPeriod}
-                readOnly
+                value={warrantyPeriod}
+                onChange={(e) => setWarrantyPeriod(e.target.value)}
               />
             </td>
           </tr>

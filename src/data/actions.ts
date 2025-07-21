@@ -53,6 +53,3 @@ export async function createWarrantyAction(formData: FormData) {
   // Redirect to /success page with warranty id
   return redirect(`/success?warrantyId=${warranty.id}`)
 }
-export async function getWarrantyCountAction() {
-  return await prisma.warranty.count()
-}

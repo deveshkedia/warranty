@@ -12,11 +12,8 @@ export default async function Home() {
   const warrantyData = (await readWarrantyCSV()) as Array<
     Record<string, string>
   >
-  const count = (await getWarrantyCountAction()) + 1
-  const warrantyNumberWith8Digits = count.toString().padStart(8, "0")
   return (
     <div className="font-sans min-h-screen p-8 pb-20 flex flex-col items-center justify-center bg-gray-50">
-      <GlobalSpinner />
       <div className="flex flex-col items-center mb-8">
         <Image src="/logo.png" alt="Logo" width={220} height={220} priority />
         <h1 className="text-2xl font-bold mt-2">Warranty Registration</h1>
@@ -28,10 +25,7 @@ export default async function Home() {
           </div>
         }
       >
-        <WarrantyFormWithSuspense
-          warrantyData={warrantyData}
-          warrantyNumberWith8Digits={warrantyNumberWith8Digits}
-        />
+        <WarrantyFormWithSuspense warrantyData={warrantyData} />
       </Suspense>
     </div>
   )

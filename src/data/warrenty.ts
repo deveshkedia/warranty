@@ -10,13 +10,13 @@ const csvFilePath = path.join(
 )
 
 export async function readWarrantyCSV() {
-  console.log(csvFilePath)
+  // console.log(csvFilePath)
   const fileContent = fs.readFileSync(csvFilePath, "utf-8")
   const records = parse(fileContent, {
     columns: true, // Set to true if you want to use the first row as keys
     skip_empty_lines: true,
   })
-  console.log(records)
+  // console.log(records)
   return records
 }
 

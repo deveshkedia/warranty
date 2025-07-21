@@ -1,5 +1,8 @@
 "use client"
-export default function DownloadPDFButton() {
+
+import React from "react"
+
+const DownloadPDFButton = () => {
   return (
     <button
       type="button"
@@ -12,3 +15,5 @@ export default function DownloadPDFButton() {
     </button>
   )
 }
+
+export default DownloadPDFButton
