@@ -46,7 +46,26 @@ export default async function SuccessPage({ searchParams }: Props) {
     <div className="font-sans min-h-screen p-8 pb-20 flex flex-col items-center justify-center bg-gray-50">
       <DownloadPDFButton targetId="warranty-content" />
       <div className="flex flex-col items-center mb-8">
-        <Image src="/logo.png" alt="Logo" width={220} height={220} priority />
+        <div className="w-full max-w-3xl flex items-center justify-between">
+          <div className="flex items-center">
+            <Image
+              src="/azura_logo.png"
+              alt="Azura logo"
+              width={220}
+              height={220}
+              priority
+            />
+          </div>
+          <div className="flex items-center">
+            <Image
+              src="/Anupam50+.png"
+              alt="Anupam logo"
+              width={220}
+              height={220}
+              priority
+            />
+          </div>
+        </div>
         <div className="mt-4 text-lg font-semibold text-gray-700">
           Warranty Number:{" "}
           <span className="font-mono bg-gray-100 px-2 py-1 rounded">

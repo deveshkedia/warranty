@@ -403,7 +403,7 @@ const WarrantyText = ({
             pointerEvents: "none",
           }}
         >
-          <Image src="/logo.jpg" alt="Logo" width={80} height={80} />
+          <Image src="/Anupam50+.png" alt="Logo" width={80} height={80} />
         </span>
       </div>
       <h2 className="text-2xl font-semibold mt-8 mb-2">Miscellaneous</h2>
